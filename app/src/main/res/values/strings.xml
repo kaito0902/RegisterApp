@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">RegisterApp</string>
+
+    <!--MainActivity-->
+    <string name="register_activity">登録画面</string>
+
+    <!--RegistrationActivity-->
+    <string name="email_text">メールアドレス</string>
+    <string name="password_text">パスワード</string>
+    <string name="email_hint">abcde@abcde.com</string>
+    <string name="password_hint">Ab123456</string>
+    <string name="create_account">アカウント作成</string>
 </resources>
