@@ -23,9 +23,10 @@ public class MainActivity extends AppCompatActivity {
         mRegister_button = findViewById(R.id.register_button);
 
         mRegister_button.setOnClickListener(view -> {
+            // READ_CONTACTS、READ_CALENDARが許可されている場合true
             if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED &&
                     ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_CALENDAR) == PackageManager.PERMISSION_GRANTED) {
-                startActivity(new Intent(MainActivity.this, RegistrationActivity.class));
+                onRegistrationStart();
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     requestPermissions(new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.READ_CALENDAR}, 0);
@@ -40,8 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == 0) {
             if (grantResults.length > 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                startActivity(new Intent(MainActivity.this, RegistrationActivity.class));
+                onRegistrationStart();
             }
         }
+    }
+
+    // RegistrationActivityへの遷移メソッド
+    private void onRegistrationStart() {
+        startActivity(new Intent(MainActivity.this, RegistrationActivity.class));
     }
 }
